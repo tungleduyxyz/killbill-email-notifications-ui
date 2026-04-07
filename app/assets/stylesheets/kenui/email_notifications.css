@@ -5,77 +5,237 @@
 
 /* The switch - the box around the slider */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 36px;
-    height: 20px;
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
 }
 
 /* Hide default HTML checkbox */
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 /* The slider */
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-    background-color: #00919d;
+  background-color: #00919d;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(16px);
-    -ms-transform: translateX(16px);
-    transform: translateX(16px);
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
 }
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 26px;
+  border-radius: 26px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 label.capitalize {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 #events {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-#events .form-group{
-    margin-bottom: 0;
+#events .form-group {
+  margin-bottom: 0;
 }
 
-.event-class{
-    word-wrap: break-word;
-    max-width: 400px;
-    font-size: .8em;
+.event-class {
+  word-wrap: break-word;
+  max-width: 400px;
+  font-size: 0.8em;
 }
+
+/* app/views/kenui/email_notifications/_configure_events_modal.html.erb */
+
+.configure-email-notifications-modal .modal-content {
+  border-radius: 1rem;
+  min-width: 40.5rem;
+}
+
+.configure-email-notifications-modal .modal-body {
+  padding-bottom: 0 !important;
+  padding-top: 1.25rem !important;
+}
+
+.configure-email-notifications-modal .modal-header {
+  padding: 1.5rem 1.5rem 1rem 1.5rem !important;
+}
+
+.configure-email-notifications-modal .modal-footer {
+  padding: 1rem 1.5rem 1.5rem 1.5rem !important;
+}
+
+.configure-email-notifications-modal .modal-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #181d27;
+}
+
+.configure-email-notifications-modal .modal-header .icon-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.0625rem solid #d5d7da;
+  border-radius: 0.375rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.25rem;
+}
+
+.configure-email-notifications-modal .modal-header .icon-container img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.configure-email-notifications-modal .close-button {
+  background: transparent;
+  padding: 0;
+  margin-top: -1.25rem;
+}
+
+.configure-email-notifications-modal .close-button:hover {
+  background: transparent;
+  padding: 0;
+}
+
+.configure-email-notifications-modal .control-label {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  line-height: 1.25rem !important;
+  color: #414651 !important;
+}
+
+.configure-email-notifications-modal .form-group.d-flex.pb-3 .form-control {
+  height: 2.5rem;
+  border-radius: 0.375rem;
+}
+
+/* app/views/kenui/email_notifications/index.html.erb */
+
+.email-notifications-index #accounts-table {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+.email-notifications-index .e-notifications-details-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  padding: 0;
+  border-bottom: 0.0625rem solid #e9eaeb;
+}
+
+.email-notifications-index .e-notifications-details-header h2 {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #414651;
+  margin-bottom: 1.25rem;
+}
+
+.email-notifications-index table {
+  overflow-x: auto;
+  min-width: 100%;
+}
+
+.email-notifications-index table.dataTable tbody td:first-child {
+  font-weight: 600 !important;
+}
+
+.email-notifications-index table.dataTable tbody td:last-child {
+  text-align: end !important;
+}
+
+.email-notifications-index table.dataTable tbody tr > td:only-child {
+  text-align: center !important;
+}
+
+.email-notifications-index table th {
+  padding: 0.375rem 0.75rem !important;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #717680;
+  text-transform: capitalize;
+}
+
+.email-notifications-index table td,
+.email-notifications-index table td a {
+  font-weight: 500;
+  font-size: 0.875rem !important;
+  padding: 1rem 0.5rem !important;
+  color: #535862 !important;
+  text-decoration: none !important;
+  white-space: wrap;
+}
+
+.email-notifications-index #accounts-table_filter {
+  margin-top: -2.75rem !important;
+}
+
+#accounts-table_length {
+  display: none;
+}
+
+.email-notifications-index #accounts-table th:first-of-type {
+  padding-left: 0.75rem !important;
+}
+
+.email-notifications-index #accounts-table td a {
+  padding: 0 !important;
+}
+
+.email-notifications-index #accounts-table_filter input {
+  width: 20rem;
+  height: 2.2rem;
+  padding: 0.3rem 1rem;
+  border: 0.0625rem solid #e5e7eb;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #414651;
+  outline: none;
+}
+
+.email-notifications-index #accounts-table_filter input:focus {
+  border: 0.0625rem solid #1a73e8;
+  outline: none;
+  box-shadow: 0;
+}
+

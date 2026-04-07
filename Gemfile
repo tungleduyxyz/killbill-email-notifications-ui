@@ -11,6 +11,11 @@ gemspec
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
+gem 'rails', '~> 7.0.1'
+
+# This fix is temporary until the next release of the gem
+# See https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
+gem 'concurrent-ruby', '1.3.4'
 
 group :development do
   gem 'gem-release'

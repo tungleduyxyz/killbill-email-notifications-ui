@@ -34,7 +34,7 @@ module Kenui
           row.name,
           view_context.link_to(row.account_id, "/accounts/#{row.account_id}"),
           events,
-          view_context.link_to('<i class="fa fa-cog" aria-hidden="true"></i>'.html_safe,
+          view_context.link_to('Edit'.html_safe,
                                '#configureEmailNotification',
                                data: { name: row.name, account_id: row.account_id,
                                        events:, toggle: 'modal', target: '#configureEmailNotification' })
@@ -66,8 +66,10 @@ module Kenui
     def set_configuration
       configuration = params.require(:configuration)
 
+      event_types = Array(configuration[:event_types]).reject(&:blank?)
+
       is_success, message = Kenui::EmailNotificationService.set_configuration_per_account(configuration[:account_id],
-                                                                                          configuration[:event_types],
+                                                                                          event_types,
                                                                                           'kenui', nil, nil,
                                                                                           options_for_klient)
 

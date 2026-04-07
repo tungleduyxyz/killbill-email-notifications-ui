@@ -1,35 +1,44 @@
-<div class="search">
+<div class="kaui-container email-notifications-index">
+  <%= render partial: 'kaui/components/breadcrumb/breadcrumb', locals: {
+    breadcrumbs: [
+      { label: 'Settings', href: '/' },
+      { label: "E-notifications", href: '#' }
+    ]
+  } %>
 
-  <div class="column-block">
+  <div class="d-flex" style="gap: 4rem;">
+    <%= render :template => 'kaui/layouts/kaui_setting_sidebar' %>
 
-    <h1>Email notifications configuration - Showing accounts</h1>
+    <div class="e-notifications-details w-100">
+      <div class="d-flex flex-column">
+        <div class="e-notifications-details-header">
+          <h2>E-notifications</h2>
+        </div>
 
-    <table id="accounts-table" class="table table-condensed mobile-data">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>ID</th>
-        <th>Events</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="3" class="dataTables_empty">Loading data from server</td>
-      </tr>
-      </tbody>
-    </table>
+        <table id="accounts-table" class="">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Events</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
 
+        <%= render :partial => 'configure_events_modal' %>
+      </div>
+    </div>
   </div>
-
-  <%= render :partial => 'configure_events_modal' %>
-
 </div>
 
 <%= javascript_tag do %>
     $(document).ready(function() {
+      $('#accounts-table_length').hide();
       var table = $('#accounts-table').DataTable({
-        "pagingType": "simple",
+        "pagingType": "full_numbers",
         "language": {
             "info": "Showing _START_ to _END_ of _TOTAL_ entries"
         },
@@ -46,5 +55,8 @@
         ]
       });
 
+      table.one('draw', function() {
+        $('#accounts-table_length').show();
+      });
     });
 <% end %>
