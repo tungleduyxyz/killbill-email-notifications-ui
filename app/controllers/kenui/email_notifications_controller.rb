@@ -27,7 +27,7 @@ module Kenui
         events = ''
         unless email_notifications_configuration.first.is_a?(FalseClass)
           configuration = email_notifications_configuration.select { |event| event[:kbAccountId] == row.account_id }
-          events = configuration.map { |event| event[:eventType] }.join(', ')
+          events = configuration.pluck(:eventType).join(', ')
         end
 
         data << [
@@ -37,12 +37,12 @@ module Kenui
           view_context.link_to('<i class="fa fa-cog" aria-hidden="true"></i>'.html_safe,
                                '#configureEmailNotification',
                                data: { name: row.name, account_id: row.account_id,
-                                       events: events, toggle: 'modal', target: '#configureEmailNotification' })
+                                       events:, toggle: 'modal', target: '#configureEmailNotification' })
         ]
       end
 
       respond_to do |format|
-        format.json { render json: { data: data, recordsTotal: record_total, recordsFiltered: record_total } }
+        format.json { render json: { data:, recordsTotal: record_total, recordsFiltered: record_total } }
       end
     end
 
@@ -50,7 +50,7 @@ module Kenui
       data = Kenui::EmailNotificationService.get_events_to_consider(options_for_klient)
 
       respond_to do |format|
-        format.json { render json: { data: data } }
+        format.json { render json: { data: } }
       end
     end
 
@@ -59,7 +59,7 @@ module Kenui
       data = Kenui::EmailNotificationService.get_configuration_per_account(account_id, options_for_klient)
 
       respond_to do |format|
-        format.json { render json: { data: data } }
+        format.json { render json: { data: } }
       end
     end
 
